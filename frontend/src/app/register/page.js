@@ -26,8 +26,13 @@ export default function RegisterPage() {
       router.push('/login');
 
     } catch (err) {
-      console.error('Registration error:', err);
-      setError(err.response?.data?.message || 'An error occurred during registration.');
+      console.error('API Error:', err);
+      if (!err.response) {
+        setError('Network error. The server may be waking up. Please wait a moment and try again.');
+      } else {
+        // This is an error from our backend (e.g., "Invalid credentials", "User already exists")
+        setError(err.response.data.message);
+      }
     }
   };
 

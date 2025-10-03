@@ -30,8 +30,13 @@ export default function LoginPage() {
       router.push('/dashboard');
 
     } catch (err) {
-      console.error('Login error:', err);
-      setError(err.response?.data?.message || 'An error occurred during login.');
+      console.error('API Error:', err);
+      if (!err.response) {
+        setError('Network error. The server may be waking up. Please wait a moment and try again.');
+      } else {
+        // This is an error from our backend (e.g., "Invalid credentials", "User already exists")
+        setError(err.response.data.message);
+      }
     }
   };
 
