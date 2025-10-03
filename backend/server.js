@@ -27,7 +27,7 @@ connectDB();
 // --- UPDATED MIDDLEWARE SECTION ---
 // We now explicitly tell cors to only allow our Vercel frontend URL
 app.use(cors({
-  origin: 'https://frontend-nine-tau-53.vercel.app'
+  origin: 'https://internship-submission-app.vercel.app'
 }));
 app.use(express.json());
 // ---------------------------------
